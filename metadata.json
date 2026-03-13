@@ -1,0 +1,5 @@
+{
+  "name": "Smart Outfit Suggestion",
+  "description": "A personalized fashion assistant that suggests outfits based on your mood, occasion, and weather.",
+  "requestFramePermissions": []
+}

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Google AI Studio App</title>
+  <!-- n8n Chat Widget z-index fix -->
+  <style>
+    /* Ensure the n8n chat widget is always on top of the React app */
+    .n8n-chat-widget,
+    #n8n-chat,
+    div[class*="n8n-chat"] {
+      z-index: 999999 !important;
+    }
+
+    /* Force display for the input area if it's being hidden */
+    .n8n-chat-widget .chat-input,
+    .n8n-chat-widget form {
+      display: flex !important;
+      visibility: visible !important;
+      pointer-events: auto !important;
+    }
+
+    /* Adjust the widget position if needed */
+    .n8n-chat-widget {
+      bottom: 20px !important;
+      right: 20px !important;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+
+  <!-- n8n Chat Widget -->
+  <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+  <script type="module">
+    import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+    createChat({
+      webhookUrl: 'https://mukthakabbinale02.app.n8n.cloud/webhook/602efb3e-36d1-48da-90e2-21cc3a753f7a/chat',
+      mode: 'window',
+      chatInputKey: 'chatInput',
+      chatSessionKey: 'sessionId',
+      showWelcomeScreen: false,
+      defaultLanguage: 'en',
+      initialMessages: [
+        'Hi there! 👋',
+        'The chat bar should appear once CORS is enabled in n8n!'
+      ],
+      i18n: {
+        en: {
+          title: 'Outfit Assistant 👗',
+          subtitle: 'Ask me anything about outfits!',
+          inputPlaceholder: 'Type your message...',
+        },
+      },
+    });
+  </script>
+</body>
+
+</html>
